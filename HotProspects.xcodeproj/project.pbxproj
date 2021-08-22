@@ -13,6 +13,9 @@
 		72418DCF26D295260035F23A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72418DCE26D295260035F23A /* Assets.xcassets */; };
 		72418DD226D295260035F23A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72418DD126D295260035F23A /* Preview Assets.xcassets */; };
 		72418DD526D295260035F23A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72418DD326D295260035F23A /* LaunchScreen.storyboard */; };
+		72418DDD26D297D00035F23A /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72418DDC26D297D00035F23A /* EditView.swift */; };
+		72418DDF26D297E50035F23A /* DisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72418DDE26D297E50035F23A /* DisplayView.swift */; };
+		72418DE126D298040035F23A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72418DE026D298040035F23A /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		72418DD126D295260035F23A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		72418DD426D295260035F23A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		72418DD626D295260035F23A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		72418DDC26D297D00035F23A /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
+		72418DDE26D297E50035F23A /* DisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayView.swift; sourceTree = "<group>"; };
+		72418DE026D298040035F23A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +65,9 @@
 				72418DC826D295230035F23A /* AppDelegate.swift */,
 				72418DCA26D295230035F23A /* SceneDelegate.swift */,
 				72418DCC26D295230035F23A /* ContentView.swift */,
+				72418DDC26D297D00035F23A /* EditView.swift */,
+				72418DE026D298040035F23A /* User.swift */,
+				72418DDE26D297E50035F23A /* DisplayView.swift */,
 				72418DCE26D295260035F23A /* Assets.xcassets */,
 				72418DD326D295260035F23A /* LaunchScreen.storyboard */,
 				72418DD626D295260035F23A /* Info.plist */,
@@ -147,6 +156,9 @@
 			files = (
 				72418DC926D295230035F23A /* AppDelegate.swift in Sources */,
 				72418DCB26D295230035F23A /* SceneDelegate.swift in Sources */,
+				72418DE126D298040035F23A /* User.swift in Sources */,
+				72418DDD26D297D00035F23A /* EditView.swift in Sources */,
+				72418DDF26D297E50035F23A /* DisplayView.swift in Sources */,
 				72418DCD26D295230035F23A /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
