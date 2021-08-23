@@ -12,15 +12,18 @@ enum NetworkError: Error {
 }
 
 struct ContentView: View {
-    @ObservedObject var user = User()
-    @State var selectedTab = 0
+    @ObservedObject var updater = DelayedUpdater()
+    /*@ObservedObject var user = User()
+    @State var selectedTab = 0*/
+    
     var body: some View {
-      Text("Hello World")
+        Text("Value is: \(updater.value)")
+      /*Text("Hello World")
         .onAppear {
             self.fetchData(from: "https://www.apple.com") {
                 result in
                 switch result {
-                    case .success(let str): print(str)
+                    case .success(let str): print("hello:",str)
                     case .failure(let error):
                         switch error {
                             case .badURL: print("Bad URL")
@@ -28,8 +31,8 @@ struct ContentView: View {
                             case .unknown: print("Unkonw error")
                         }
                     }
-                }            
-        }
+                }
+        }*/
     }
     
     func fetchData(from urlString: String, completion: @escaping (Result<String, NetworkError>) -> Void) {
