@@ -17,8 +17,17 @@ struct ContentView: View {
     @State var selectedTab = 0*/
     
     var body: some View {
-        Text("Value is: \(updater.value)")
-      /*Text("Hello World")
+        //Text("Value is: \(updater.value)")
+      
+        Image("example")
+            .interpolation(.none)
+            .resizable()
+            .scaledToFit()
+            .frame(maxHeight: .infinity)
+            .background(Color.black)
+            .edgesIgnoringSafeArea(.all)
+        
+        /*Text("Hello World")
         .onAppear {
             self.fetchData(from: "https://www.apple.com") {
                 result in
