@@ -7,20 +7,28 @@
 
 import SwiftUI
 import UserNotifications
-
+import SamplePackage
 enum NetworkError: Error {
     case badURL, requestFailed, unknown
 }
 
 struct ContentView: View {
     @State var backgroundColor = Color.red
+    let possibleNumbers = Array(1...60)
+    var results: String {
+        let selected = possibleNumbers.random(7).sorted()
+        let strings = selected.map(String.init)
+        return strings.joined(separator: ", ")
+    }
     /*@ObservedObject var updater = DelayedUpdater()
     @ObservedObject var user = User()
     @State var selectedTab = 0*/
    
     
     var body: some View {
-        VStack {
+        Text(results)
+        
+        /*VStack {
             Button("Request Permission") {
                 UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.badge,.sound]) { success, error in
                     if success {
@@ -42,7 +50,7 @@ struct ContentView: View {
                 
                 UNUserNotificationCenter.current().add(request)
             }
-        }
+        }*/
         
         /*VStack {
             Text("Hello, World!")
