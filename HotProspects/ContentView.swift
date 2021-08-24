@@ -12,21 +12,43 @@ enum NetworkError: Error {
 }
 
 struct ContentView: View {
-    @ObservedObject var updater = DelayedUpdater()
-    /*@ObservedObject var user = User()
+    @State var backgroundColor = Color.red
+    /*@ObservedObject var updater = DelayedUpdater()
+    @ObservedObject var user = User()
     @State var selectedTab = 0*/
+   
     
     var body: some View {
-        //Text("Value is: \(updater.value)")
-      
-        Image("example")
-            .interpolation(.none)
-            .resizable()
-            .scaledToFit()
-            .frame(maxHeight: .infinity)
-            .background(Color.black)
-            .edgesIgnoringSafeArea(.all)
+        VStack {
+            Text("Hello, World!")
+                .padding()
+                .background(backgroundColor)
+            Text("Change Color")
+                .padding()
+                .contextMenu {
+                    Button(action: {
+                        self.backgroundColor = .red
+                    }, label: {
+                        Text("Red")
+                        Image(systemName: "checkmark.circle.fill")
+                            .foregroundColor(.red)
+                    })
+                    Button(action: {
+                        self.backgroundColor = .green
+                    }, label: {
+                        Text("Green")
+                    })
+                    Button(action: {
+                        self.backgroundColor = .blue
+                    }, label: {
+                        Text("Blue")
+                    })
+                }
+                   
+                
+        }
         
+        //Text("Value is: \(updater.value)")
         /*Text("Hello World")
         .onAppear {
             self.fetchData(from: "https://www.apple.com") {
