@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CodeScanner
+import UserNotifications
 
 struct ProspectsView: View {
     @EnvironmentObject var prospects: Prospects
@@ -55,6 +56,11 @@ struct ProspectsView: View {
                                 "Mark Contacted") {
                             self.prospects.toggle(prospect)
                         }
+                        if !prospect.isContacted {
+                            Button("Remind Me") {
+                                self.addNotification(for: prospect)
+                            }
+                        }
                     }
                 }
             }
@@ -86,6 +92,44 @@ struct ProspectsView: View {
                 self.prospects.add(person)
             case .failure(_):
                 print("Scanning failed")
+        }
+    }
+    
+    func addNotification(for prospect: Prospect) {
+        //create notificationcenter object
+        let center = UNUserNotificationCenter.current()
+        
+        let addRequest = {
+            // create a content to show in notification
+            let content = UNMutableNotificationContent()
+            content.title = "Content \(prospect.name)"
+            content.subtitle = prospect.emailAddress
+            content.sound = UNNotificationSound.default
+            // date component
+            var dateComponents = DateComponents()
+            dateComponents.hour = 9 //set hour
+            //create a trigger object with calendar notification.
+           // let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+            // now create a request
+            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+            //add request to the notificationcenter object.
+            center.add(request)
+        }
+        center.getNotificationSettings { settings in
+            if settings.authorizationStatus == .authorized {
+                addRequest()
+            }
+            else {
+                center.requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+                    if success {
+                        addRequest()
+                    }
+                    else {
+                        print("D'oh")
+                    }
+                }
+            }
         }
     }
 }
