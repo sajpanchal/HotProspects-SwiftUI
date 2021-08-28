@@ -12,6 +12,7 @@ import UserNotifications
 struct ProspectsView: View {
     @EnvironmentObject var prospects: Prospects
     @State var isShowingScanner = false
+    @State var sortResult = false
     enum FilterType {
         case none, contacted, uncontacted
     }
@@ -59,7 +60,6 @@ struct ProspectsView: View {
                                 .foregroundColor(.secondary)
                         }
                     }
-                    
                     .contextMenu {
                         Button(prospect.isContacted ? "Mark Uncontacted" :
                                 "Mark Contacted") {
@@ -74,18 +74,41 @@ struct ProspectsView: View {
                 }
             }
                 .navigationBarTitle(title)
-                .navigationBarItems(trailing: Button(action: {
+            .actionSheet(isPresented: $sortResult, content: {
+                ActionSheet(title: Text("Sort Contact List"), message: Text("Choose Options..."), buttons: [
+                    .default(Text("By Name")) {
+                         prospects.people.sort {
+                            $0.name < $1.name
+                        }
+                    },
+                                .default(Text("By Most Recent")) {
+                                    prospects.people.sort {
+                                        $0.id > $1.id
+                                    }
+                                },
+                    .cancel()
+                ])
+            })
+            .navigationBarItems(leading: Button(action: {
+                self.sortResult = true
+            }, label: {
+                Text("Filter")
+            }) ,trailing: Button(action: {
                     self.isShowingScanner = true
                 }, label: {
                     Image(systemName: "qrcode.viewfinder")
                     Text("Scan")
                 }))
+            
             .sheet(isPresented: $isShowingScanner, content: {
                 CodeScannerView(codeTypes: [.qr], simulatedData: "Saj Panchal\nsajpanchal@gmail.com", completion: self.handleScan)
             })
+            /**/
+            
+          
+             
+        
         }
-        
-        
     }
     func handleScan(result: Result<String, CodeScannerView.ScanError>) {
         self.isShowingScanner = false

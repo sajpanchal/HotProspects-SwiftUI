@@ -15,7 +15,7 @@ class Prospect: Identifiable, Codable {
 }
 
 class Prospects: ObservableObject {
-    @Published private(set) var people: [Prospect]
+    @Published var people: [Prospect]
     static let saveKey = "SavedData"
     
     init() {
@@ -34,7 +34,7 @@ class Prospects: ObservableObject {
         return paths[0]
     }
     
-    private func save() {
+     func save() {
         if let encoded = try? JSONEncoder().encode(people) {
             let url = Self.getDocumentsDirectory().appendingPathComponent("contacts.txt")
             do {
